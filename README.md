@@ -33,6 +33,13 @@ Key capabilities of vim-ide include:
 # Screenshots
 
 
+![screenshot-java](https://user-images.githubusercontent.com/60242848/179606812-0fe4032a-0a9d-4c13-9649-2c5634b3f843.png)
+Figure 1 -- Java Code Editing
+
+![screenshot-clojure](https://user-images.githubusercontent.com/60242848/179606850-002eb321-53dc-4e2e-aa6f-ca6d0c1a1327.png)
+Figure 2 -- Clojure Code Editing
+
+
 # Installation
 Installation can setup the full IDE functionality (see [IDE Installation](#ide-installation)) or portable e.g. non-IDE functionality (see [Portable (Non-IDE) Functionality](#portable-non-ide-installation)).
 
