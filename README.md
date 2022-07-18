@@ -51,7 +51,7 @@ The following instructions setup vim-ide with full IDE functionality, which requ
    a. stty -ixon
 3. Install cid-nrepl for REPL integration provided by [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace).  For more details, see [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace) and [cider-nrepl](https://docs.cider.mx/cider-nrepl/usage.html)
    a. Note that installation failed.  REPL support for S-expression evaluation and documentation lookup still functions.
-4. Download "vimrc" and "vimrc-ide", and move/rename as "~/.vimrc" and "~/.vimrc-ide".
+4. Download "vimrc" and "vimrc-ide", and move/rename as ~/.vimrc" and ~/.vimrc-ide.
 5. Start vim.  Plugins will install automatically install.
    a. vi
 6. Disregard the error message on startup (press "enter"), which occurs because a plugin isn't available (it will be installed).
@@ -82,7 +82,7 @@ Updates are different for full IDE functionality (see [IDE Update](#ide-update))
 
 ## IDE Update
 The following instructions update vim-ide.  WARNING:  before proceeding, backup your ~/.vimrc and ~/.vimrc-ide files if they exist and you made custom modifications.
-1. Check if new versions of "vimrc" or "vimrc-ide" are available and, if so, download and move/rename  as "~/.vimrc" and "~/.vimrc-ide".
+1. Check if new versions of "vimrc" or "vimrc-ide" are available and, if so, download and move/rename as ~/.vimrc and ~/.vimrc-ide.
 2. Start vim.
    a. vi
 3. Run the update command.  Follow the directions at the bottom of the screen.
@@ -91,7 +91,7 @@ The following instructions update vim-ide.  WARNING:  before proceeding, backup 
 
 ## Portable (Non-IDE) Update
 The following instructions update vim-ide without IDE functionality.  WARNING:  before proceeding, backup your ~/.vimrc file if it exists and you made custom modifications.
-1. Check if a new versions of "vimrc" is available and, if so, download and move/rename  as "~/.vimrc".
+1. Check if a new versions of "vimrc" is available and, if so, download and move/rename  as ~/.vimrc.
 2. Start vim
    a. vi
 3. Source the new vimrc file to ensure that vim is seeing the current configuration.
