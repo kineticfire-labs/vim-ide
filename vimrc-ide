@@ -1,0 +1,245 @@
+" Copyright (c) 2022 KineticFire
+
+" Licensed under the Apache License, Version 2.0 (the "License");
+" you may not use this file except in compliance with the License.
+" You may obtain a copy of the License at
+
+"    http://www.apache.org/licenses/LICENSE-2.0
+
+" Unless required by applicable law or agreed to in writing, software
+" distributed under the License is distributed on an "AS IS" BASIS,
+" WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+" See the License for the specific language governing permissions and
+" limitations under the License.
+
+
+
+" vim-ide
+"    from https://github.com/kineticfire-labs/vim-ide
+"
+"    by KineticFire Labs (https:\\labs.kineticfire.com)
+"
+"
+" Must be sourced from .vimrc
+"
+"
+
+
+
+" IDE specific
+
+   " Automatically installs vim-plug, if not already, and defines plugins to be managed by vim-plug.
+      " https://github.com/junegunn/vim-plug
+      " Code for auto install from:  https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+   let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+   if empty(glob(data_dir . '/autoload/plug.vim'))
+     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+   endif
+
+   " vim-plug's plugin management actions:
+      ":PlugInstall
+      ":PlugUpdate
+      ":PlugStatus
+      ":PlugClean
+      ":PlugUpgrade
+
+
+   " define plugins for vim-plug
+   call plug#begin('~/.vim/plugged')
+
+   Plug 'morhetz/gruvbox'
+   Plug 'vim-airline/vim-airline'
+   Plug 'sheerun/vim-polyglot'
+   Plug 'tpope/vim-commentary'
+   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+   Plug 'preservim/tagbar'
+   Plug 'yggdroot/indentline'
+   Plug 'wfxr/minimap.vim'
+
+   " Clojure-specific plugins.  Only active for 'clojure' type files.
+   Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
+   Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
+   Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+   call plug#end()
+
+
+   " Plugin listing:
+
+   " morhetz/gruvbox
+      " Purpose: theme (colors)
+      " Link: https://github.com/morhetz/gruvbox
+   " vim-airline/vim-airline
+      " Purpose: Status line
+      " Link: https://github.com/vim-airline/vim-airline
+   " sheerun/vim-polyglot
+      " Purpose: Multi-language syntax highlighting
+      " Link: https://github.com/sheerun/vim-polyglot
+   " tpope/vim-commentary
+      " Purpose: Comment handling
+      " Link: https://github.com/tpope/vim-commentary
+   " neoclide/coc.nvim
+      " Purpose: Autocompletion
+      " Link: https://github.com/neoclide/coc.nvim
+   " preservim/tagbar
+      " Purpose: Tag outline
+      " Link: https://github.com/preservim/tagbar
+   " yggdroot/indentline
+      " Purpose: Visualize indents
+      " Link: https://github.com/Yggdroot/indentLine
+   " wfxr/minimap.vim
+      " Purpose: Display code minimap
+      " Link: https://github.com/wfxr/minimap.vim
+   " guns/vim-clojure-highlight
+      " Purpose: Syntax highlighting for Clojure
+      " Link: https://github.com/guns/vim-clojure-highlight
+   " vim-scripts/paredit.vim
+      " Purpose: s-expression handling for Clojure
+      " Link: https://github.com/vim-scripts/paredit.vim
+   " tpope/vim-fireplace
+      " Purpose: REPL interaction for Clojure
+      " Link: https://github.com/tpope/vim-fireplace
+
+
+
+" Performs initial install of IDE-related features.  Must call this once before using the IDE functionality; should not need to call again.  Calling multiple times is ok.
+"
+" PRECONDITIONS:
+"  - nodejs is installed, which is required by coc.nvim
+"
+function! IdeInit()
+   execute ":PlugInstall"
+   execute input("Wait for PlugInstall to complete, then press the <enter> key")
+   execute ":CocInstall coc-tsserver coc-tabnine coc-clojure coc-java coc-pyright coc-sh coc-json coc-html coc-css"
+   execute input("Wait for CocInstall to complete, then press the <enter> key.  Press 'q' to close open windows from installation.")
+endfunction
+
+
+" Updates plugins managed by vim-plug and packages managed by coc.nvim.
+"
+" PRECONDITIONS: 
+"  - command ':IdeInit' was run
+"  - nodejs is installed, which is required by coc.nvim
+"
+function! IdeUpdate()
+   execute ":PlugUpdate"
+   execute input("Wait for PlugUpdate to complete, then press the <enter> key")
+   execute ":CocUpdate"
+   execute input("Wait for CocUpdate to complete, then press the <enter> key.  Press 'q' to close open windows from installation.")
+endfunction
+
+
+" Cleans plugins managed by vim-plug.  Plugins no longer defined in the 'VimPlugSetup' function are removed from the filesystem.
+"
+" PRECONDITIONS:
+"  - command ':IdeInit' was run
+"  - nodejs is installed, which is required by coc.nvim
+"
+function! IdeClean()
+   execute ":PlugClean"
+   execute input("Wait for PlugClean to complete, then press the <enter> key.  Press 'q' to close open windows from installation.")
+endfunction
+
+
+" PRECONDITIONS:
+"  - command ':IdeInit' was run
+"  - nodejs is installed, which is required by coc.nvim
+
+   " morhetz/gruvbox 
+   " terminal color settings from https://medium.com/@edominguez.se/fuzzy-searchhow-to-set-up-vim-in-2021-2-3-b8eae1b77497
+   set termguicolors
+   let g:gruvbox_italic=1
+   colorscheme gruvbox
+   hi Normal guibg=NONE ctermbg=NONE
+   let g:terminal_ansi_colors = [
+       \ '#282828', '#cc241d', '#98971a', '#d79921',
+       \ '#458588', '#b16286', '#689d6a', '#a89984',
+       \ '#928374', '#fb4934', '#b8bb26', '#fabd2f',
+       \ '#83a598', '#d3869b', '#8ec07c', '#ebdbb2',
+   \]
+   set background=dark
+
+
+   " tpope/vim-airline
+   let g:airline_powerline_fonts=1
+
+   " neoclide/coc.nvim
+
+   " Set internal encoding of vim, not needed on neovim, since coc.nvim using some unicode characters in the file autoload/float.vim (from neoclide/coc.vim).
+   set encoding=utf-8
+   " Avoid vim prompting to save if buffer is hidden.  Also, TextEdit might fail if hidden is not set (for neoclide/coc.nvim).
+   set hidden
+   " Some servers have issues with backup files
+   set nobackup
+   set nowritebackup
+
+   " Give more space for displaying messages.
+   set cmdheight=2
+
+   " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+   set updatetime=300
+
+   " Don't pass messages to |ins-completion-menu|.
+   set shortmess+=c
+
+   " Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
+   if has("nvim-0.5.0") || has("patch-8.1.1564")
+     " Recently vim can merge signcolumn and number column into one
+     set signcolumn=number
+   else
+     set signcolumn=yes
+   endif
+
+   " Make <CR> auto-select the first completion item and notify coc.nvim to format on enter, <cr> could be remapped by other vim plugin
+   inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                                 \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+
+
+   " preservim/tagbar
+
+   map <leader>tt :TagbarToggle<CR>
+
+   " Extend .jsx support
+   let g:tagbar_type_javascriptreact = {
+    \ 'ctagstype': 'javascript',
+    \ 'kinds': [
+          \ 'A:array',
+          \ 'P:property',
+          \ 'T:tags',
+          \ 'O:objects',
+          \ 'g:generator functions',
+          \ 'f:functions',
+          \ 'c:classes',
+          \ 'm:methods',
+          \ 'V:variables',
+          \ 'I:imports',
+          \ 'E:exports',
+          \ 's:styled components'
+    \ ]}
+
+
+   " Yggdroot/indentLine
+   map <leader>il :IndentLinesToggle<CR>
+   let g:indentLine_enabled = 0
+
+
+   " wfxr/minimap.vim
+   let g:minimap_width = 10
+   let g:minimap_auto_start = 0
+   " there is an error in minimap when setting 'minimap_auto_start_win_enter'
+   " to 1, then opening/closing file explorer
+   let g:minimap_auto_start_win_enter = 0
+   map mt :MinimapToggle<CR>
+   map mr :MinimapRefresh<CR>
+   highlight minimapCursor ctermbg=59 ctermfg=228 guibg=#5F5F5F guifg=#FFFF87
+   highlight minimapRange ctermbg=242 ctermfg=228 guibg=#4F4F4F guifg=#FFFF87
+
+
+
+" Helper functions for IDE
+" vimrc must be located at ~/.vimrc
+:command! -nargs=0 IdeInit :source ~/.vimrc<bar>:call IdeInit()
+:command! -nargs=0 IdeUpdate :source ~/.vimrc<bar>:call IdeUpdate()
+:command! -nargs=0 IdeClean :source ~/.vimrc<bar>:call IdeClean()
