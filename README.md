@@ -71,7 +71,7 @@ The following instructions setup vim-ide without IDE functionality.  WARNING:  b
 
 
 # Updating
-
+Updates are different for full IDE functionality (see [IDE Update](#ide-update)) or portable e.g. non-IDE functionality (see [Portable (Non-IDE) Update](#portable-non-ide-update)).
 
 ## IDE Update
 The following instructions update vim-ide.  WARNING:  before proceeding, backup your ~/.vimrc and ~/.vimrc-ide files if they exist and you made custom modifications.
