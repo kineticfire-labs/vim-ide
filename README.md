@@ -34,7 +34,7 @@ Key capabilities of vim-ide include:
 
 
 # Installation
-
+Installation can setup the full IDE functionality (see [IDE Installation](#ide-installation)) or portable e.g. non-IDE functionality (see [Portable (Non-IDE) Functionality](#portable-non-ide-installation)).
 
 ## IDE Installation
 The following instructions setup vim-ide with full IDE functionality, which requires downloading plugins.  WARNING:  before proceeding, backup your ~/.vimrc and ~/.vimrc-ide files if they exist and you made custom modifications.
