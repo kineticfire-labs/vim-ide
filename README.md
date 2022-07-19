@@ -253,7 +253,7 @@ vim (and thus vim-ide) has a fundamental difference from other text editors and 
 | \<space\>fe | no | yes | Open file explorer |
 | \<space\>tt | no | no | Toggle tag bar |
 | \<space\>mt | no | no | Toggle minimap |
-| \<space\>me | no | no | Refresh minimap |
+| \<space\>mr | no | no | Refresh minimap |
 | gcc | no | no | Un/comment a line |
 | gc | no | no | Un/comment a visual selection |
 | gc5k | no | no | Un/comment 5 lines up |
