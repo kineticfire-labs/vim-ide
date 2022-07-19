@@ -1,6 +1,19 @@
 # vim-ide
 Use vim as an IDE!
 
+# Table of Contents
+1. [Purpose](#purpose)
+2. [Key Capabilities](#key-capabilities)
+3. [Screenshots](#screenshots)
+4. [Installation](#installation)
+   1. [IDE Installation](#ide-installation)
+   2. [Portable (Non-IDE) Functionality](#portable-non-ide-installation)
+5. [Updating](#updating)
+   1. [IDE Update](#ide-update)
+   2. [Portable (Non-IDE) Update](#portable-non-ide-update)
+6. [Usage](#usage)
+7. [Limitations](#limitations)
+
 
 # Purpose
 vim-ide provides a unified IDE experience.  vim-ide takes an opinionated approach of defining shortcuts for frequently-used commands and adding only necessary functionality by curating and integrating vim plugins, all while working with native vim settings that you already know.  That means less time configuring your IDE, and more time toward productive software engineering.
@@ -31,7 +44,6 @@ Key capabilities of vim-ide include:
 
 
 # Screenshots
-
 
 ![screenshot-java](https://user-images.githubusercontent.com/60242848/179606812-0fe4032a-0a9d-4c13-9649-2c5634b3f843.png)
 Figure 1 -- Java Code Editing
@@ -265,7 +277,7 @@ REPL-related commands require a running REPL prior to opening a Clojure file; th
 | :Javadoc | no | no | Open Java docs for the class under cursor in browser |
 
 
-# Known Limitations
-Known limitations include:
+# Limitations
+Limitations include:
 1. Linux/Unix systems only
 
