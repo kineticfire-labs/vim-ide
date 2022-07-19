@@ -46,35 +46,35 @@ Installation can setup the full IDE functionality (see [IDE Installation](#ide-i
 ## IDE Installation
 The following instructions setup vim-ide with full IDE functionality, which requires downloading plugins.  WARNING:  before proceeding, backup your ~/.vimrc and ~/.vimrc-ide files if they exist and you made custom modifications.
 1. Install nodejs.  Required for code autocompletion provided by [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).  For more details, see [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
-   a. curl -sL install-node.vercel.app/lts | bash
+   1. curl -sL install-node.vercel.app/lts | bash
 2. Add the following to ~/.bashrc, which causes the terminal to pass CTRL-S to vim (which is used to save the file vs. causing the terminal to hang).
-   a. stty -ixon
+   1. stty -ixon
 3. Install cid-nrepl for REPL integration provided by [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace).  For more details, see [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace) and [cider-nrepl](https://docs.cider.mx/cider-nrepl/usage.html)
-   a. Note that installation failed.  REPL support for S-expression evaluation and documentation lookup still functions.
-4. Download "vimrc" and "vimrc-ide", and move/rename as ~/.vimrc" and ~/.vimrc-ide.
+   1. Note that installation failed.  REPL support for S-expression evaluation and documentation lookup still functions.
+4. Download "vimrc" and "vimrc-ide", and move/rename as "\~/.vimrc" and "\~/.vimrc-ide".
 5. Start vim.  Plugins will install automatically install.
-   a. vi
+   1. vi
 6. Disregard the error message on startup (press "enter"), which occurs because a plugin isn't available (it will be installed).
 7. Wait for the plugins to install.  Press "enter" to dismiss the error message and "q" to dismiss the installation window.
 
 If you encounter problems, then force install by:
 1. Start vim
-   a. vi
+   1. vi
 2. Source the new vimrc file
-   a. :so ~/.vimrc
+   1. :so ~/.vimrc
 3. Install plugins
-   a. :IdeInit
+   1. :IdeInit
 
 
 ## Portable (Non-IDE) Installation
 The following instructions setup vim-ide without IDE functionality.  WARNING:  before proceeding, backup your ~/.vimrc file if it exists and you made custom modifications.
 1. Add the following to ~/.bashrc, which causes the terminal to pass CTRL-S to vim (which is used to save the file vs. causing the terminal to hang).
-   a. stty -ixon
+   1. stty -ixon
 2. Download "vimrc", and move/rename as "~/.vimrc".
 3. Start vim
-   a. vi
+   1. vi
 4. Source the new vimrc file to ensure that vim is seeing the current configuration.
-   a. :so ~/.vimrc
+   1. :so ~/.vimrc
 
 
 # Updating
@@ -84,18 +84,18 @@ Updates are different for full IDE functionality (see [IDE Update](#ide-update))
 The following instructions update vim-ide.  WARNING:  before proceeding, backup your ~/.vimrc and ~/.vimrc-ide files if they exist and you made custom modifications.
 1. Check if new versions of "vimrc" or "vimrc-ide" are available and, if so, download and move/rename as ~/.vimrc and ~/.vimrc-ide.
 2. Start vim.
-   a. vi
+   1. vi
 3. Run the update command.  Follow the directions at the bottom of the screen.
-   a. :IdeUpdate
+   1. :IdeUpdate
 
 
 ## Portable (Non-IDE) Update
 The following instructions update vim-ide without IDE functionality.  WARNING:  before proceeding, backup your ~/.vimrc file if it exists and you made custom modifications.
 1. Check if a new versions of "vimrc" is available and, if so, download and move/rename  as ~/.vimrc.
 2. Start vim
-   a. vi
+   1. vi
 3. Source the new vimrc file to ensure that vim is seeing the current configuration.
-   a. :so ~/.vimrc
+   1. :so ~/.vimrc
 
 
 # Usage
@@ -251,7 +251,7 @@ vim (and thus vim-ide) has a fundamental difference from other text editors and 
 
 **Clojure specific**
 
-REPL-related commands require a running REPL prior to opening a Clojure file; the REPL may started with a command such as "lein repl" from the top-level Clojure project directory.
+REPL-related commands require a running REPL prior to opening a Clojure file; the REPL may be started with a command such as "lein repl" from the top-level Clojure project directory.
 
 | Command | vim Default | Available in Portable | Description |
 | --- | --- | --- | --- |
