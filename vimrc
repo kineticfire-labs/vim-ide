@@ -130,7 +130,7 @@ set number
 set norelativenumber
 set numberwidth=3
 " Toggle line numbering
-nmap <C-y> :set invnumber<CR>
+map <leader>ln :set invnumber<CR>
 
 set signcolumn=no
 

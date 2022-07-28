@@ -57,17 +57,20 @@ Installation can setup the full IDE functionality (see [IDE Installation](#ide-i
 
 ## IDE Installation
 The following instructions setup vim-ide with full IDE functionality, which requires downloading plugins.  WARNING:  before proceeding, backup your ~/.vimrc and ~/.vimrc-ide files if they exist and you made custom modifications.
-1. Install nodejs.  Required for code autocompletion provided by [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).  For more details, see [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
+1. Install Node.js.  Required for code autocompletion provided by [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).  Note that Node.js 12.12 or greater is required.  If you already have Node.js installed (check the version of Node.js with 'node --version') and if less than version 12.12, see [Node.js](https://nodejs.org/en/download/) for installing a more current version.  For more details, see [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
    1. curl -sL install-node.vercel.app/lts | bash
 2. Add the following to ~/.bashrc, which causes the terminal to pass CTRL-S to vim (which is used to save the file vs. causing the terminal to hang).
    1. stty -ixon
-3. Install cid-nrepl for REPL integration provided by [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace).  For more details, see [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace) and [cider-nrepl](https://docs.cider.mx/cider-nrepl/usage.html)
-   1. Note that installation failed.  REPL support for S-expression evaluation and documentation lookup still functions.
+3. Install cid-nrepl for REPL integration provided by [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace).  For more details, see [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace) and [cider-nrepl](https://docs.cider.mx/cider-nrepl/usage.html).
+   1. NOTE:  The cider-nrepl documentation says to declare the cider-nrepl library as a plugin e.g. ':plugins [[cider/cider-nrepl "0.27.3"]]', however this method failed.  Defining the cider-nrepl library in the 'dependencies' vector worked, so the dependencies vector may look like ':dependencies \[\[org.clojure/clojure "1.10.0"][cider/cider-nrepl "0.27.3"]]'.
 4. Download "vimrc" and "vimrc-ide", and move/rename as "\~/.vimrc" and "\~/.vimrc-ide".
-5. Start vim.  Plugins will install automatically install.
+5. Install vim (or otherwise be sure that vim installed).  For Debian-based Linux distributions (including Ubuntu), use the commands that follow else consult your distro's documentation.
+   1. sudo apt-get update
+   2. sudo apt-get install vim
+6. Start vim.  Plugins will install automatically install.
    1. vi
-6. Disregard the error message on startup (press "enter"), which occurs because a plugin isn't available (it will be installed).
-7. Wait for the plugins to install.  Press "enter" to dismiss the error message and "q" to dismiss the installation window.
+7. Disregard the error message on startup (press "enter"), which occurs because a plugin isn't available (it will be installed).
+8. Wait for the plugins to install.  Press "enter" to dismiss the error message and "q" to dismiss the installation window.
 
 If you encounter problems, then force install by:
 1. Start vim
@@ -83,9 +86,12 @@ The following instructions setup vim-ide without IDE functionality.  WARNING:  b
 1. Add the following to ~/.bashrc, which causes the terminal to pass CTRL-S to vim (which is used to save the file vs. causing the terminal to hang).
    1. stty -ixon
 2. Download "vimrc", and move/rename as "~/.vimrc".
-3. Start vim
+3. Install vim (or otherwise be sure that vim installed).  For Debian-based Linux distributions (including Ubuntu), use the commands that follow else consult your distro's documentation.
+   1. sudo apt-get update
+   2. sudo apt-get install vim
+4. Start vim
    1. vi
-4. Source the new vimrc file to ensure that vim is seeing the current configuration.
+5. Source the new vimrc file to ensure that vim is seeing the current configuration.
    1. :so ~/.vimrc
 
 
@@ -129,7 +135,7 @@ vim (and thus vim-ide) has a fundamental difference from other text editors and 
 | Command | vim Default | Available in Portable | Description |
 | --- | --- | --- | --- |
 | jk | no | yes | Exit insert mode and go to command mode, e.g. \<ESC\> |
-| \<Ctrl-y\> | no | yes | Toggle line numbering |
+| \<leader\>ln | no | yes | Toggle line numbering |
 | \<space\>ic | no | yes | Toggle indicator for invisible characters |
 | \<space\>lw | no | yes | Toggle line wrap |
 | \<space\>il | no | no | Toggle indent line indicators |
