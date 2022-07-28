@@ -69,7 +69,7 @@ The following instructions setup vim-ide with full IDE functionality, which requ
    1. vi
 6. Disregard the error message on startup (press "enter"), which occurs because a plugin isn't available (it will be installed).
 7. Wait for the plugins to install.  Press "enter" to dismiss the error message and "q" to dismiss the installation window.
-8. For Clojure REPL suport, see 
+8. For Clojure REPL suport, see 'Clojure REPL Support' in the [Usage](#usage) section.
 
 If you encounter problems, then force install by:
 1. Start vim
