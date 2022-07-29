@@ -1,5 +1,5 @@
 # vim-ide
-<img align="right" height="100" alt="Screenshot of vim-ide editing Java" src="https://user-images.githubusercontent.com/60242848/179606812-0fe4032a-0a9d-4c13-9649-2c5634b3f843.png">
+<img align="right" width="50%" alt="Screenshot of vim-ide editing Java" src="https://user-images.githubusercontent.com/60242848/179606812-0fe4032a-0a9d-4c13-9649-2c5634b3f843.png">
 vim-ide provides a seemless IDE experience with vim, using an opinionated configuration that includes integration of carefully selected plugins for necessary functionality.
 
 Focus on software engineering and not on setting up and debugging your IDE.
@@ -9,7 +9,7 @@ Why a vim-based IDE?
 2. Efficient use of screen space, thanks to a keyboard-based command paradigm (fewer menu bars) and dynamic windows
 3. More quickly execute productive actions using keyboard command sequences
 4. Leverage the same efficiency in muscle-memory between IDE and other file manipulation work
-5. Small resource (CPU, memory, storage) footprint
+5. Small resource (CPU, memory, and storage) footprint
 6. Fast startup time
 7. Low-latency response from key press to action
 8. Extensive documentation, tutorials, and help from a robust user community
@@ -62,12 +62,16 @@ Key capabilities of vim-ide include:
 
 
 # Screenshots
+<p align="center">
+<img width="75%" alt="Screenshot of vim-ide editing Java" src="https://user-images.githubusercontent.com/60242848/179606812-0fe4032a-0a9d-4c13-9649-2c5634b3f843.png">
+</p>
+<p align="center">Figure 1 -- Java Code Editing</p>
 
-![Screenshot of vim-ide editing Java](https://user-images.githubusercontent.com/60242848/179606812-0fe4032a-0a9d-4c13-9649-2c5634b3f843.png)
-Figure 1 -- Java Code Editing
+<p align="center">
+<img width="75%" alt="Screenshot of vim-ide editing Clojure" src="https://user-images.githubusercontent.com/60242848/179606850-002eb321-53dc-4e2e-aa6f-ca6d0c1a1327.png">
+</p>
+<p align="center">Figure 2 -- Clojure Code Editing</p>
 
-![Screenshot of vim-ide editing Clojure](https://user-images.githubusercontent.com/60242848/179606850-002eb321-53dc-4e2e-aa6f-ca6d0c1a1327.png)
-Figure 2 -- Clojure Code Editing
 
 
 # Installation
@@ -75,14 +79,17 @@ Installation can setup the full IDE functionality (see [IDE Installation](#ide-i
 
 ## IDE Installation
 The following instructions setup vim-ide with full IDE functionality, which requires downloading plugins.  WARNING:  before proceeding, backup your ~/.vimrc and ~/.vimrc-ide files if they exist and you made custom modifications.
-1. Install Node.js with the following command.  Required for code autocompletion provided by [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).  Note that Node.js 12.12 or greater is required; installing Node.js through your distro's package manager often installs a much older version than is current.  If you already have Node.js installed, then check the version of Node.js with 'node --version'.  If the Node.js version is less than 12.12 or the install script didn't work, see instructions at the end of this section for Node.js.  For more details, see [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
+1. Install Node.js with the following command.  Node.js is required for code autocompletion provided by [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).  Note that Node.js 12.12 or greater is required; installing Node.js through your distro's package manager often installs a much older version than is current.  If you already have Node.js installed, then check the version of Node.js with 'node --version'.  If the Node.js version is less than 12.12 or the install script didn't work, see instructions at the end of this section for Node.js.  For more details, see [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
    1. curl -sL install-node.vercel.app/lts | bash
 2. Install code-minimap, which is required by [wfxr/minimap.vim](https://github.com/wfxr/minimap.vim).
    1. sudo apt install cargo
    2. cargo install --locked code-minimap
+   3. Add the following code to the end of your ~/.bashrc
+```
 if [ -d "$HOME/.cargo/bin" ] ; then
     export PATH="above:$PATH"
 fi
+```
    3. source ~/.bashrc
    4. Verify that code-minimap is installed
       1. code-minimap --version 
