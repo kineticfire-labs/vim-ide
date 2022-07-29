@@ -1,5 +1,23 @@
 # vim-ide
-Use vim as an IDE!
+<img align="right" height="100" alt="Screenshot of vim-ide editing Java" src="https://user-images.githubusercontent.com/60242848/179606812-0fe4032a-0a9d-4c13-9649-2c5634b3f843.png">
+vim-ide provides a seemless IDE experience with vim, using an opinionated configuration that includes integration of carefully selected plugins for necessary functionality.
+
+Focus on software engineering and not on setting up and debugging your IDE.
+
+Why a vim-based IDE?
+1. Buffers provide an extra dimension to quickly access and manipulate files, in addition to windows and tabs provided by most IDEs
+2. Efficient use of screen space, thanks to a keyboard-based command paradigm (fewer menu bars) and dynamic windows
+3. More quickly execute productive actions using keyboard command sequences
+4. Leverage the same efficiency in muscle-memory between IDE and other file manipulation work
+5. Small resource (CPU, memory, storage) footprint
+6. Fast startup time
+7. Low-latency response from key press to action
+8. Extensive documentation, tutorials, and help from a robust user community
+9. Large assortment of plugins for new functionality
+10. Highly configurable
+11. Open source
+12. No cost
+
 
 # Table of Contents
 1. [Purpose](#purpose)
@@ -45,10 +63,10 @@ Key capabilities of vim-ide include:
 
 # Screenshots
 
-![screenshot-java](https://user-images.githubusercontent.com/60242848/179606812-0fe4032a-0a9d-4c13-9649-2c5634b3f843.png)
+![Screenshot of vim-ide editing Java](https://user-images.githubusercontent.com/60242848/179606812-0fe4032a-0a9d-4c13-9649-2c5634b3f843.png)
 Figure 1 -- Java Code Editing
 
-![screenshot-clojure](https://user-images.githubusercontent.com/60242848/179606850-002eb321-53dc-4e2e-aa6f-ca6d0c1a1327.png)
+![Screenshot of vim-ide editing Clojure](https://user-images.githubusercontent.com/60242848/179606850-002eb321-53dc-4e2e-aa6f-ca6d0c1a1327.png)
 Figure 2 -- Clojure Code Editing
 
 
@@ -57,19 +75,28 @@ Installation can setup the full IDE functionality (see [IDE Installation](#ide-i
 
 ## IDE Installation
 The following instructions setup vim-ide with full IDE functionality, which requires downloading plugins.  WARNING:  before proceeding, backup your ~/.vimrc and ~/.vimrc-ide files if they exist and you made custom modifications.
-1. Install Node.js.  Required for code autocompletion provided by [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).  Note that Node.js 12.12 or greater is required.  If you already have Node.js installed (check the version of Node.js with 'node --version') and if less than version 12.12, see [Node.js](https://nodejs.org/en/download/) for installing a more current version.  For more details, see [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
+1. Install Node.js with the following command.  Required for code autocompletion provided by [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).  Note that Node.js 12.12 or greater is required; installing Node.js through your distro's package manager often installs a much older version than is current.  If you already have Node.js installed, then check the version of Node.js with 'node --version'.  If the Node.js version is less than 12.12 or the install script didn't work, see instructions at the end of this section for Node.js.  For more details, see [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
    1. curl -sL install-node.vercel.app/lts | bash
-2. Add the following to ~/.bashrc, which causes the terminal to pass CTRL-S to vim (which is used to save the file vs. causing the terminal to hang).
+2. Install code-minimap, which is required by [wfxr/minimap.vim](https://github.com/wfxr/minimap.vim).
+   1. sudo apt install cargo
+   2. cargo install --locked code-minimap
+if [ -d "$HOME/.cargo/bin" ] ; then
+    export PATH="above:$PATH"
+fi
+   3. source ~/.bashrc
+   4. Verify that code-minimap is installed
+      1. code-minimap --version 
+3. Add the following to ~/.bashrc, which causes the terminal to pass CTRL-S to vim (which is used to save the file vs. causing the terminal to hang).
    1. stty -ixon
-3. Download "vimrc" and "vimrc-ide", and move/rename as "\~/.vimrc" and "\~/.vimrc-ide".
-4. Install vim (or otherwise be sure that vim installed).  For Debian-based Linux distributions (including Ubuntu), use the commands that follow else consult your distro's documentation.
+4. Download "vimrc" and "vimrc-ide", and move/rename as "\~/.vimrc" and "\~/.vimrc-ide".
+5. Install vim (or otherwise be sure that vim installed).  For Debian-based Linux distributions (including Ubuntu), use the commands that follow else consult your distro's documentation.
    1. sudo apt-get update
    2. sudo apt-get install vim
-5. Start vim.  Plugins will install automatically install.
+6. Start vim.  Plugins will install automatically install.
    1. vi
-6. Disregard the error message on startup (press "enter"), which occurs because a plugin isn't available (it will be installed).
-7. Wait for the plugins to install.  Press "enter" to dismiss the error message and "q" to dismiss the installation window.
-8. For Clojure REPL suport, see 'Clojure REPL Support' in the [Usage](#usage) section.
+7. Disregard the error message on startup (press "enter"), which occurs because a plugin isn't available (it will be installed).
+8. Wait for the plugins to install.  Press "enter" to dismiss the error message and "q" to dismiss the installation window.
+9. For Clojure REPL support, see 'Clojure REPL Support' in the [Usage](#usage) section.
 
 If you encounter problems, then force install by:
 1. Start vim
@@ -78,6 +105,14 @@ If you encounter problems, then force install by:
    1. :so ~/.vimrc
 3. Install plugins
    1. :IdeInit
+
+If the Node.js install script didn't work, then see [Node.js](https://nodejs.org/en/download/).  For Debian-based systems (including Ubuntu):
+1. Navigate to [Node.js](https://nodejs.org/en/download/)
+2. Download the latest Long-Term Support (LTS) version
+3. tar -xf \<file name\>
+4. sudo cp -r dir{bin,include,lib,share} /usr
+5. Verify that Node.js version 12.12 or greater is installed
+   1. node --version
 
 
 ## Portable (Non-IDE) Installation
@@ -125,7 +160,7 @@ vim (and thus vim-ide) has a fundamental difference from other text editors and 
 **Settings**
 1. The leader key is \<space\>
 2. Tab uses three spaces vs. an actual tab character
-3. Window splits occur to the right for a vertical split or bottom for a horizontal split, which is more natural
+3. Window splits occur to the right for a vertical split or bottom for a horizontal split, which are more natural
 4. Mouse functionality is enabled.  Use \<Shift\> and mouse press and drag to highlight and copy.
 
 
@@ -272,7 +307,7 @@ Clojure REPL support:
 1. Include the cider-nrepl library '[cider/cider-nrepl "0.27.3"]' in the 'dependencies' vector in your 'project.clj' file.  The 'dependencies' vector may look like:  ':dependencies \[\[org.clojure/clojure "1.10.0"][cider/cider-nrepl "0.27.3"]]'.
    1. For more details, see [tpope/vim-fireplace](https://github.com/tpope/vim-fireplace) and [cider-nrepl](https://docs.cider.mx/cider-nrepl/usage.html).
    2. NOTE:  The cider-nrepl documentation says to declare the cider-nrepl library as a plugin e.g. ':plugins [[cider/cider-nrepl "0.27.3"]]', however this method failed.  Defining the cider-nrepl library in the 'dependencies' vector as above worked.
-2. REPL-related commands require a running REPL prior to opening a Clojure file; the REPL may be started with a command such as "lein repl" from a Clojure project directory.
+2. REPL-related commands require a running REPL **prior** to opening a Clojure file; the REPL may be started with a command such as "lein repl" from a Clojure project directory.
 
 
 | Command | vim Default | Available in Portable | Description |
