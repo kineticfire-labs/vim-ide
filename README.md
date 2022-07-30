@@ -333,3 +333,6 @@ Clojure REPL support:
 Limitations include:
 1. Linux/Unix systems only
 
+# License
+- This project is released under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) and includes code under [MIT License](https://opensource.org/licenses/MIT) as described in the NOTICE.
+- Vim is under [Vim License](https://github.com/vim/vim/blob/master/LICENSE)
