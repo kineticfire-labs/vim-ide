@@ -31,6 +31,7 @@ Why a vim-based IDE?
    2. [Portable (Non-IDE) Update](#portable-non-ide-update)
 6. [Usage](#usage)
 7. [Limitations](#limitations)
+8. [License](#license)
 
 
 # Purpose
