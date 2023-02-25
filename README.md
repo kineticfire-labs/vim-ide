@@ -78,28 +78,53 @@ Key capabilities of vim-ide include:
 # Installation
 Installation can setup the full IDE functionality (see [IDE Installation](#ide-installation)) or portable e.g. non-IDE functionality (see [Portable (Non-IDE) Functionality](#portable-non-ide-installation)).
 
+Some of the commands may be specific to Debian-based Linux distributions (inluding Ubuntu).  If you aren't using a Debian-based Linux distribution, then consult your distro's documentation.
+
 ## IDE Installation
 The following instructions setup vim-ide with full IDE functionality, which requires downloading plugins.  WARNING:  before proceeding, backup your ~/.vimrc and ~/.vimrc-ide files if they exist and you made custom modifications.
-1. Install Node.js with the following command.  Node.js is required for code autocompletion provided by [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).  Note that Node.js 12.12 or greater is required; installing Node.js through your distro's package manager often installs a much older version than is current.  If you already have Node.js installed, then check the version of Node.js with 'node --version'.  If the Node.js version is less than 12.12 or the install script didn't work, see instructions at the end of this section for Node.js.  For more details, see [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
-   1. curl -sL install-node.vercel.app/lts | bash
-2. Install code-minimap, which is required by [wfxr/minimap.vim](https://github.com/wfxr/minimap.vim).
+1. Install (or update) vim. [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim) requires vim 8.1.1719 or later (or Neovim 0.4.0 or later).
+   1. sudo apt-get update
+   2. sudo apt-get install vim
+2. Install Node.js with one of the following options.  Node.js is required for code autocompletion provided by [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).  Note that Node.js 14.14 or greater is required; installing Node.js through your distro's package manager often installs a much older version than is current.  If you already have Node.js installed, then check the version of Node.js with 'node --version'.  For more details, see [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).
+   1. OPTION 1 (RECOMMENDED):  Install Node.js with with [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm).  nvm can install multiple versions of Node.js, and switch between the different versions. nvm is a great choice for development environments; do not use in production.
+      1. Install nvm
+         1. curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+      2. Install the latest version of Node.js with Long Term Support (LTS)
+         1. nvm install --lts
+      3. Check the current active version of Node.js.
+         1. node --version
+   2. OPTION 2: Install Node.js with a [script](https://github.com/vercel/install-node)
+      1. Create a directory to hold the installation of Node.js, such as ~/.nodejs
+         1. mkdir ~/.nodejs
+      2. Run the script to install the latest LTS version of Node.js
+         1. curl -sfLS install-node.vercel.app/lts | bash -s -- --prefix=~/.nodejs
+      3. Add the path to the Node.js installation's "bin" directory to the path in ~/.bashrc
+      4. Check the current active version of Node.js.
+         1. node --version
+   3. OPTION 3: Install Node.js manually
+      1. Download Node.js from [Node.js](https://nodejs.org/en/download/)
+      2. Create a directory to hold the installation of Node.js, such as ~/.nodejs
+         1. mkdir ~/.nodejs
+      3. Untar and unzip the Node.js downloaded file to the directory created above
+         1. tar xvf <file> -C ~/.nodejs
+      4. Add the path to the Node.js installation's "bin" directory to the path in ~/.bashrc
+      5. Check the current active version of Node.js.
+         1. node --version
+3. Install code-minimap, which is required by [wfxr/minimap.vim](https://github.com/wfxr/minimap.vim).
    1. sudo apt install cargo
    2. cargo install --locked code-minimap
    3. Add the following code to the end of your ~/.bashrc
 ```
 if [ -d "$HOME/.cargo/bin" ] ; then
-    export PATH="above:$PATH"
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 ```
    3. source ~/.bashrc
    4. Verify that code-minimap is installed
       1. code-minimap --version 
-3. Add the following to ~/.bashrc, which causes the terminal to pass CTRL-S to vim (which is used to save the file vs. causing the terminal to hang).
+4. Add the following to ~/.bashrc, which causes the terminal to pass CTRL-S to vim (which is used to save the file vs. causing the terminal to hang).
    1. stty -ixon
-4. Download "vimrc" and "vimrc-ide", and move/rename as "\~/.vimrc" and "\~/.vimrc-ide".
-5. Install vim (or otherwise be sure that vim installed).  For Debian-based Linux distributions (including Ubuntu), use the commands that follow else consult your distro's documentation.
-   1. sudo apt-get update
-   2. sudo apt-get install vim
+5. Download "vimrc" and "vimrc-ide", and move/rename as "\~/.vimrc" and "\~/.vimrc-ide".
 6. Start vim.  Plugins will install automatically install.
    1. vi
 7. Disregard the error message on startup (press "enter"), which occurs because a plugin isn't available (it will be installed).
@@ -114,23 +139,14 @@ If you encounter problems, then force install by:
 3. Install plugins
    1. :IdeInit
 
-If the Node.js install script didn't work, then see [Node.js](https://nodejs.org/en/download/).  For Debian-based systems (including Ubuntu):
-1. Navigate to [Node.js](https://nodejs.org/en/download/)
-2. Download the latest Long-Term Support (LTS) version
-3. tar -xf \<file name\>
-4. sudo cp -r dir{bin,include,lib,share} /usr
-5. Verify that Node.js version 12.12 or greater is installed
-   1. node --version
-
-
 ## Portable (Non-IDE) Installation
 The following instructions setup vim-ide without IDE functionality.  WARNING:  before proceeding, backup your ~/.vimrc file if it exists and you made custom modifications.
-1. Add the following to ~/.bashrc, which causes the terminal to pass CTRL-S to vim (which is used to save the file vs. causing the terminal to hang).
-   1. stty -ixon
-2. Download "vimrc", and move/rename as "~/.vimrc".
-3. Install vim (or otherwise be sure that vim installed).  For Debian-based Linux distributions (including Ubuntu), use the commands that follow else consult your distro's documentation.
+1. Install (or update) vim. [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim) requires vim 8.1.1719 or later (or Neovim 0.4.0 or later).
    1. sudo apt-get update
    2. sudo apt-get install vim
+2. Add the following to ~/.bashrc, which causes the terminal to pass CTRL-S to vim (which is used to save the file vs. causing the terminal to hang).
+   1. stty -ixon
+3. Download "vimrc", and move/rename as "~/.vimrc".
 4. Start vim
    1. vi
 5. Source the new vimrc file to ensure that vim is seeing the current configuration.
@@ -320,6 +336,7 @@ Clojure REPL support:
 
 | Command | vim Default | Available in Portable | Description |
 | --- | --- | --- | --- |
+| \<leader\>pe | no | no | Toggle paredit on and off |
 | cpp | no | no | Evaluate expression under cursor in REPL |
 | cqq | no | no | Bring up command line window with innermost form at cursor populated, ready to evaluate in REPL |
 | cqc | no | no | Bring up command line window with innermost form at cursor populated with a blank line in insert mode, ready to evaluate in REPL |

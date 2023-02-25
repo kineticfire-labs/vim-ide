@@ -126,11 +126,22 @@ set backspace=indent,eol,start
 
 
 " Enable line numbering
-set number
-set norelativenumber
 set numberwidth=3
-" Toggle line numbering
-map <leader>ln :set invnumber<CR>
+set number
+set relativenumber
+
+" Toggle line numbering display
+map <silent> <leader>ln :call LineNumberToggle()<CR>
+function! LineNumberToggle()
+   if &number == 1
+      set nornu
+      set nonumber
+   else
+      set number
+      set relativenumber
+   endif
+endfunction
+
 
 set signcolumn=no
 
@@ -534,7 +545,12 @@ function! NetrwMapping()
 endfunction
 
 
+
+" =====================================================
+" =====================================================
+" =====================================================
 " source '~/.vimrc-ide' if it exists
+
 if filereadable( expand( '~/.vimrc-ide' ) )
    source ~/.vimrc-ide
 endif
