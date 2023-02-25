@@ -82,7 +82,7 @@ Some of the commands may be specific to Debian-based Linux distributions (inludi
 
 ## IDE Installation
 The following instructions setup vim-ide with full IDE functionality, which requires downloading plugins.  WARNING:  before proceeding, backup your ~/.vimrc and ~/.vimrc-ide files if they exist and you made custom modifications.
-1. Install (or update) vim. [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim) requires vim 8.1.1719 or later (or Neovim 0.4.0 or later).
+1. Install (or update) vim. [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim) requires vim 8.2.0750 or later (or Neovim 0.4.0 or later).
    1. sudo apt-get update
    2. sudo apt-get install vim
 2. Install Node.js with one of the following options.  Node.js is required for code autocompletion provided by [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).  Note that Node.js 14.14 or greater is required; installing Node.js through your distro's package manager often installs a much older version than is current.  If you already have Node.js installed, then check the version of Node.js with 'node --version'.  For more details, see [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim).
@@ -131,7 +131,7 @@ fi
 8. Wait for the plugins to install.  Press "enter" to dismiss the error message and "q" to dismiss the installation window.
 9. For Clojure REPL support, see 'Clojure REPL Support' in the [Usage](#usage) section.
 
-If you encounter problems, then force install by:
+If you encounter problems, first backup then remove directories under ~/.vim/ 'autoload', 'plugged' and try again.  If that failes, then force install by:
 1. Start vim
    1. vi
 2. Source the new vimrc file
