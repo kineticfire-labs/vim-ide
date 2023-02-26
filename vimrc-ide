@@ -48,6 +48,14 @@
    " disable neoclide/coc.nvim warning about vim version
    let g:coc_disable_startup_warning = 1
 
+
+   " prevents vim-scripts/paredit.vim remapping of:
+   "   - normal mode 'O' (insert newline above and go into insert mode)
+   "   - normal mode 'I' (go to end of line in insert mode)
+   " paredit can't seem to use 'space' as the leader key?
+   let g:paredit_leader = ';'
+
+
    " define plugins for vim-plug
    call plug#begin('~/.vim/plugged')
 
@@ -263,7 +271,9 @@ endfunction
    " paredit
    " usage: https://github.com/vim-scripts/paredit.vim/blob/master/doc/paredit.txt
    " cheat sheet: https://gist.github.com/nblumoe/5450099
-   map <silent> <leader>pe :let g:paredit_mode=!g:paredit_mode<CR>
+   nnoremap <silent> <leader>pe :call PareditToggle()<CR>
+
+
 
 
 " Helper functions for IDE
