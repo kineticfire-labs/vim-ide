@@ -194,14 +194,15 @@ endfunction
      set signcolumn=yes
    endif
 
-   " Make <CR> auto-select the first completion item and notify coc.nvim to format on enter, <cr> could be remapped by other vim plugin
-   inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                                 \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+   "Map 'jj' in insert mode to accept first autocomplete option.  Configuration suggestion at https://github.com/neoclide/coc.nvim suggested using <CR> (e.g. 'enter' button), however that prevents typing characters and pressing a newline (without accepting the first autocomplete option, if that popup is present.
+   inoremap <silent><expr> jj coc#pum#visible() ? coc#pum#confirm() : "jj"
+
 
    inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
+
    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 

@@ -50,6 +50,11 @@ inoremap jk <Esc>
 syntax on
 
 
+" Set delays
+set timeoutlen=1000
+set ttimeoutlen=50
+
+
 " Tab settings
    " Set tab key to use three spaces instead of tab
 set tabstop=3
