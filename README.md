@@ -322,7 +322,7 @@ vim (and thus vim-ide) has a fundamental difference from other text editors and 
 | gc | no | no | Un/comment a visual selection |
 | gc5k | no | no | Un/comment 5 lines up |
 | gc5j | no | no | Un/comment 5 lines down |
-| \<Enter\> | no | no | Select first autocomplete option |
+| \<jj\> | no | no | Select first autocomplete option |
 | \<Tab\> | no | no | Next item in autocomplete menu |
 | \<Up\> | no | no | Next item in autocomplete menu |
 | \<Shift-Tab\> | no | no | Previous item in autocomplete menu |
