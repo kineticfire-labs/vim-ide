@@ -274,6 +274,10 @@ endfunction
    nnoremap <silent> <leader>pe :call PareditToggle()<CR>
 
 
+   " Sets color columns for gitcommit message
+   set colorcolumn=+1
+   autocmd FileType gitcommit set colorcolumn+=51
+
 
 
 " Helper functions for IDE
