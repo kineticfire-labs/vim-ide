@@ -1,4 +1,7 @@
 # vim-ide
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<p></p>
 <img align="right" width="50%" alt="Screenshot of vim-ide editing Java" src="https://user-images.githubusercontent.com/60242848/179606812-0fe4032a-0a9d-4c13-9649-2c5634b3f843.png">
 vim-ide provides a seemless IDE experience with vim, using an opinionated configuration that includes integration of carefully selected plugins for necessary functionality.
 
